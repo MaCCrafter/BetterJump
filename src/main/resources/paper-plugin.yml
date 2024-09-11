@@ -1,0 +1,8 @@
+name: BetterJump
+version: '${project.version}'
+main: de.aurorus.betterjump.BetterJump
+api-version: '1.19'
+author: Aurorus
+website: https://aurocode.com/
+commands:
+ betterjump:

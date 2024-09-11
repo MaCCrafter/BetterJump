@@ -1,0 +1,7 @@
+de\aurorus\betterjump\commands\BetterJumpCommand.class
+de\aurorus\betterjump\listener\PlayerMoveListener.class
+de\aurorus\betterjump\listener\PlayerToggleFlightListener.class
+de\aurorus\betterjump\BetterJump.class
+de\aurorus\betterjump\util\CooldownManager.class
+de\aurorus\betterjump\listener\PlayerJumpListener.class
+de\aurorus\betterjump\util\ConfigManager.class

@@ -1,0 +1,81 @@
+#
+#  ██████╗ ███████╗████████╗████████╗███████╗██████╗      ██╗██╗   ██╗███╗   ███╗██████╗
+#  ██╔══██╗██╔════╝╚══██╔══╝╚══██╔══╝██╔════╝██╔══██╗     ██║██║   ██║████╗ ████║██╔══██╗
+#  ██████╔╝█████╗     ██║      ██║   █████╗  ██████╔╝     ██║██║   ██║██╔████╔██║██████╔╝
+#  ██╔══██╗██╔══╝     ██║      ██║   ██╔══╝  ██╔══██╗██   ██║██║   ██║██║╚██╔╝██║██╔═══╝
+#  ██████╔╝███████╗   ██║      ██║   ███████╗██║  ██║╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║
+#  ╚═════╝ ╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚═╝  ╚═╝ ╚════╝  ╚═════╝ ╚═╝     ╚═╝╚═╝
+#
+#
+# Made by Aurorus
+# Support: https://aurocode.com/dc
+
+# General settings for the BetterJump plugin
+settings:
+  # Enable or disable the double jump feature
+  enableDoubleJump: true  # Set to true to allow players to double jump, false to disable
+
+  # Enable or disable the jump boost feature
+  enableJumpBoost: false  # Set to true to allow players to use jump boost, false to disable
+
+  # List of worlds where double jump and jump boost are enabled
+  # Uncomment and add your world names to limit the functionality to specific worlds
+  worlds:
+  #   - "world"
+  #   - "world_nether"
+  #   - "world_the_end"
+
+  # Custom messages sent to players for different plugin actions
+  messages:
+    cooldownMessage: "&8[&6&lBetterJump&8] &7You must wait &6%duration% seconds&7 before jumping again."
+
+  # Double Jump settings
+  doubleJump:
+    # Cooldown time in seconds between double jumps (set to 0 to disable cooldown)
+    cooldown: 5
+    sendCooldownMessage: true
+
+    # The vertical velocity applied to the player when performing a double jump (set in blocks)
+    velocity: 1.0
+
+    # Sound settings for double jump
+    sound:
+      enableSound: true                   # Set to true to enable sounds for double jump
+      soundOnJump: "ENTITY_FIREWORK_ROCKET_LAUNCH" # The sound that plays when a player double jumps
+
+    # Particle settings for double jump
+    particle:
+      enableParticles: true  # Set to true to enable particle effects on double jump
+      particleType: "CLOUD"  # Type of particle that will be displayed
+      particleCount: 2  # Number of particles spawned when double jump occurs
+
+  # Jump Boost settings
+  jumpBoost:
+    # Cooldown time in seconds between jump boosts (set to 0 to disable cooldown)
+    cooldown: 5
+    sendCooldownMessage: false
+
+    # The vertical boost percentage applied during a jump boost
+    velocity: 1.0
+
+    # Sound settings for jump boost
+    sound:
+      enableSound: true  # Set to true to enable sounds for jump boost
+      soundOnJump: "ENTITY_FIREWORK_ROCKET_LAUNCH"  # The sound that plays when jump boost is used
+
+    # Particle settings for jump boost
+    particle:
+      enableParticles: true  # Set to true to enable particle effects for jump boost
+      particleType: "CLOUD"  # Type of particle to be shown when jump boost is used
+      particleCount: 2  # Number of particles spawned on jump boost
+
+# Permissions settings
+permissions:
+  # Permission required to use the double jump feature
+  useDoubleJump: "betterjump.use.doublejump"  # Players with this permission can use double jump
+
+  # Permission required to use the jump boost feature
+  useJumpBoost: "betterjump.use.jumpboost"    # Players with this permission can use jump boost
+
+  # Permission to bypass cooldown restrictions for both double jump and jump boost
+  bypassCooldown: "betterjump.bypass.cooldown"  # Players with this permission bypass cooldowns
