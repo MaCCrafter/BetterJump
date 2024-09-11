@@ -6,6 +6,7 @@ import de.aurorus.betterjump.listener.PlayerMoveListener;
 import de.aurorus.betterjump.listener.PlayerToggleFlightListener;
 import de.aurorus.betterjump.util.ConfigManager;
 import de.aurorus.betterjump.util.CooldownManager;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,14 +14,17 @@ public final class BetterJump extends JavaPlugin {
 
     private static BetterJump instance;
 
-    private final ConfigManager configManager = new ConfigManager();
-    private final CooldownManager cooldownManager = new CooldownManager();
+    private ConfigManager configManager;
+    private CooldownManager cooldownManager;
 
     @Override
     public void onEnable() {
         instance = this;
 
+        configManager = new ConfigManager();
         configManager.createConfig();
+
+        cooldownManager = new CooldownManager();
 
         registerEvents();
         registerCommands();
@@ -34,7 +38,11 @@ public final class BetterJump extends JavaPlugin {
     }
 
     private void registerCommands() {
-        getCommand("betterjump").setExecutor(new BetterJumpCommand());
+        PluginCommand command = getCommand("betterjump");
+
+        if (command != null) {
+            command.setExecutor(new BetterJumpCommand());
+        }
     }
 
     public static BetterJump getInstance() {

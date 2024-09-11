@@ -7,6 +7,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
+import java.util.List;
+
 public class PlayerMoveListener implements Listener {
 
     private ConfigManager configManager = BetterJump.getInstance().getConfigManager();
@@ -15,7 +17,9 @@ public class PlayerMoveListener implements Listener {
     public void onMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
         if(configManager.getConfig().getBoolean("settings.enableDoubleJump") && player.isOnGround()) {
-            if (configManager.getConfig().getList("settings.worlds").isEmpty() || configManager.getConfig().getList("settings.worlds").contains(player.getWorld().getName()))
+            List<String> worlds = (List<String>) configManager.getConfig().getList("settings.worlds");
+
+            if (worlds == null || worlds.isEmpty() || worlds.contains(player.getWorld().getName()))
                 player.setAllowFlight(true);
         }
     }

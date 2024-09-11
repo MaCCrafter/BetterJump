@@ -10,6 +10,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
+import java.util.List;
+
 public class PlayerJumpListener implements Listener {
 
     private ConfigManager configManager = BetterJump.getInstance().getConfigManager();
@@ -19,8 +21,13 @@ public class PlayerJumpListener implements Listener {
     public void onJump(PlayerJumpEvent event) {
         Player player = event.getPlayer();
 
-        if(!configManager.getConfig().getList("settings.worlds").isEmpty() || !configManager.getConfig().getList("settings.worlds").contains(player.getWorld().getName()))
-            return;
+        List<String> worlds = (List<String>) configManager.getConfig().getList("settings.worlds");
+
+        if(worlds != null) {
+            if (!worlds.isEmpty() && !worlds.contains(player.getWorld().getName())) {
+                return;
+            }
+        }
 
         if(configManager.getConfig().getBoolean("settings.enableJumpBoost") && player.hasPermission(configManager.getConfig().getString("permissions.useJumpBoost"))) {
             if(cooldownManager.canUseJumpBoost(player.getUniqueId())) {

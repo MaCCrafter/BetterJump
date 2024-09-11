@@ -11,6 +11,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 
+import java.util.List;
+
 public class PlayerToggleFlightListener implements Listener {
 
     private ConfigManager configManager = BetterJump.getInstance().getConfigManager();
@@ -23,8 +25,13 @@ public class PlayerToggleFlightListener implements Listener {
         if(!player.getGameMode().equals(GameMode.ADVENTURE) || !player.getGameMode().equals(GameMode.SURVIVAL))
             return;
 
-        if(!configManager.getConfig().getList("settings.worlds").isEmpty() || !configManager.getConfig().getList("settings.worlds").contains(player.getWorld().getName()))
+        List<String> worlds = (List<String>) configManager.getConfig().getList("settings.worlds");
+
+        if(worlds != null) {
+        if (!worlds.isEmpty() && !worlds.contains(player.getWorld().getName())) {
             return;
+        }
+        }
 
         if(configManager.getConfig().getBoolean("settings.enableDoubleJump") && player.hasPermission(configManager.getConfig().getString("permissions.useDoubleJump"))) {
 
