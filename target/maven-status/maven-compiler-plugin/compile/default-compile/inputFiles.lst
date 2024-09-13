@@ -1,7 +1,9 @@
-D:\Github Repos\BetterJump\src\main\java\de\aurorus\betterjump\listener\PlayerMoveListener.java
+D:\Github Repos\BetterJump\src\main\java\de\aurorus\betterjump\util\WorldWhitelistManager.java
 D:\Github Repos\BetterJump\src\main\java\de\aurorus\betterjump\listener\PlayerToggleFlightListener.java
+D:\Github Repos\BetterJump\src\main\java\de\aurorus\betterjump\listener\PlayerChangeWorldListener.java
 D:\Github Repos\BetterJump\src\main\java\de\aurorus\betterjump\util\ConfigManager.java
 D:\Github Repos\BetterJump\src\main\java\de\aurorus\betterjump\listener\PlayerJumpListener.java
-D:\Github Repos\BetterJump\src\main\java\de\aurorus\betterjump\commands\BetterJumpCommand.java
+D:\Github Repos\BetterJump\src\main\java\de\aurorus\betterjump\util\ParticleManager.java
 D:\Github Repos\BetterJump\src\main\java\de\aurorus\betterjump\util\CooldownManager.java
 D:\Github Repos\BetterJump\src\main\java\de\aurorus\betterjump\BetterJump.java
+D:\Github Repos\BetterJump\src\main\java\de\aurorus\betterjump\listener\EntityDamageListener.java

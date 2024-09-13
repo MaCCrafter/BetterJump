@@ -1,14 +1,19 @@
 package de.aurorus.betterjump;
 
-import de.aurorus.betterjump.commands.BetterJumpCommand;
+import de.aurorus.betterjump.listener.EntityDamageListener;
+import de.aurorus.betterjump.listener.PlayerChangeWorldListener;
 import de.aurorus.betterjump.listener.PlayerJumpListener;
-import de.aurorus.betterjump.listener.PlayerMoveListener;
 import de.aurorus.betterjump.listener.PlayerToggleFlightListener;
 import de.aurorus.betterjump.util.ConfigManager;
 import de.aurorus.betterjump.util.CooldownManager;
-import org.bukkit.command.PluginCommand;
+import de.aurorus.betterjump.util.ParticleManager;
+import de.aurorus.betterjump.util.WorldWhitelistManager;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class BetterJump extends JavaPlugin {
 
@@ -16,6 +21,10 @@ public final class BetterJump extends JavaPlugin {
 
     private ConfigManager configManager;
     private CooldownManager cooldownManager;
+    private WorldWhitelistManager worldWhitelistManager;
+    private ParticleManager particleManager;
+
+    public List<Player> preventFallDamage = new ArrayList<>();
 
     @Override
     public void onEnable() {
@@ -26,24 +35,21 @@ public final class BetterJump extends JavaPlugin {
 
         cooldownManager = new CooldownManager();
 
+        worldWhitelistManager = new WorldWhitelistManager();
+
+        particleManager = new ParticleManager();
+
         registerEvents();
-        registerCommands();
     }
 
     private void registerEvents() {
         PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(new PlayerJumpListener(), this);
         pluginManager.registerEvents(new PlayerToggleFlightListener(), this);
-        pluginManager.registerEvents(new PlayerMoveListener(), this);
+        pluginManager.registerEvents(new PlayerChangeWorldListener(), this);
+        pluginManager.registerEvents(new EntityDamageListener(), this);
     }
 
-    private void registerCommands() {
-        PluginCommand command = getCommand("betterjump");
-
-        if (command != null) {
-            command.setExecutor(new BetterJumpCommand());
-        }
-    }
 
     public static BetterJump getInstance() {
         return instance;
@@ -55,5 +61,13 @@ public final class BetterJump extends JavaPlugin {
 
     public CooldownManager getCooldownManager() {
         return cooldownManager;
+    }
+
+    public WorldWhitelistManager getWorldWhitelistManager() {
+        return worldWhitelistManager;
+    }
+
+    public ParticleManager getParticleManager() {
+        return particleManager;
     }
 }

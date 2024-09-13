@@ -13,7 +13,7 @@ public class ConfigManager {
     private FileConfiguration config;
 
     public void createConfig() {
-        configFile = new File(BetterJump.getInstance().getDataFolder(), "custom_config.yml");
+        configFile = new File(BetterJump.getInstance().getDataFolder(), "config.yml");
 
         if (!configFile.exists()) {
             BetterJump.getInstance().saveResource("config.yml", false);
